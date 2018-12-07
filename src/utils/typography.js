@@ -1,6 +1,5 @@
-import Typography from 'typography'
-// import fairyGatesTheme from 'typography-theme-fairy-gates'
+import Typography from 'typography';
 
 const typography = new Typography();
 
-export default typography
+export default typography;

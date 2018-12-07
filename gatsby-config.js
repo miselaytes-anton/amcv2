@@ -1,8 +1,10 @@
 module.exports = {
   plugins:     [{
-    resolve: `gatsby-plugin-typography`,
+    resolve: 'gatsby-plugin-typography',
     options: {
-      pathToConfigModule: `src/utils/typography.js`,
+      pathToConfigModule: 'src/utils/typography.js',
     },
-  },]
-}
+  },
+  'gatsby-plugin-eslint'
+  ]
+};

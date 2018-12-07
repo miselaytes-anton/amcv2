@@ -1,9 +1,9 @@
-const {projects, articles} =  require('./content')
+const {projects, articles} = require('./content');
 
-exports.createPages = async ({ actions: { createPage } }) => {
+exports.createPages = async ({actions: {createPage}}) => {
   createPage({
-    path: `/`,
-    component: require.resolve("./src/templates/index.js"),
-    context: { projects, articles },
-  })
-}
+    path: '/',
+    component: require.resolve('./src/templates/index.js'),
+    context: {projects, articles},
+  });
+};
