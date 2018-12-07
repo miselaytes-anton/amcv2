@@ -24,5 +24,9 @@ module.exports = {
   meta: {
     title: "Hi! I'm Anton. Yet another web developer",
     siteUrl: 'https://amiselaytes.com',
+  },
+  urls: {
+    github: 'https://github.com/miselaytes-anton',
+    medium: 'https://medium.com/@a.miselaytes'
   }
 };
