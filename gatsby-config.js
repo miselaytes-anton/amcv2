@@ -5,6 +5,14 @@ module.exports = {
       pathToConfigModule: 'src/utils/typography.js',
     },
   },
-  'gatsby-plugin-eslint'
+  {
+    resolve: 'gatsby-plugin-eslint',
+    options: {
+      options: {
+        emitWarning: true,
+        failOnError: false
+      }
+    }
+  }
   ]
 };

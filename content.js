@@ -20,5 +20,9 @@ module.exports = {
       body: 'Angular looper for live input',
       url: 'https://amiselaytes.com/loop',
     },
-  ]
+  ],
+  meta: {
+    title: "Hi! I'm Anton. Yet another web developer",
+    siteUrl: 'https://amiselaytes.com',
+  }
 };
