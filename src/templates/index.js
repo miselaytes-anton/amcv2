@@ -1,5 +1,6 @@
 import React from 'react';
 import Meta from '../components/meta';
+import Canvas from '../components/canvas';
 
 const Project = ({title, body, url}) => (<div>
   <h3><a href={url}>{title}</a></h3>
@@ -11,10 +12,11 @@ const Article = ({title, url}) => (<li>
 </li>);
 
 export default ({pageContext: {projects, articles, meta, urls}}) => (
-  <div style={{margin: '3rem auto', maxWidth: 600}}>
+  <div style={{margin: '1rem auto', maxWidth: 600}}>
     <Meta {...meta} />
+    <Canvas />
     <h1>About</h1>
-    <p> Hi! I'm Anton, yet another web developer. Lately I do a lot of <strong>music & audio</strong> related projects.
+    <p> Hi! I'm Anton, a web developer. Lately I do a lot of <strong>music & audio</strong> related projects.
             You can check my code at <a href={urls.github} target="_blanc" title="code">GitHub </a>
             and read some of my articles at <a href={urls.medium} target="_blanc" title="articles">Medium</a>.
     </p>
@@ -22,6 +24,5 @@ export default ({pageContext: {projects, articles, meta, urls}}) => (
     <ul> {articles.map(article => <Article key={article.url} {...article} />)} </ul>
     <h1>Projects</h1>
     {projects.map(project => <Project key={project.url} {...project} />)}
-
   </div>
 );

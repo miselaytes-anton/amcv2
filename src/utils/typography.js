@@ -27,6 +27,9 @@ const typography = new Typography({
     'a:hover,a:active': {
       color: options.bodyColor,
     },
+    'body': {
+      textAlign: 'center'
+    }
   }),
 });
 // #369e6c
