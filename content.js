@@ -12,17 +12,22 @@ module.exports = {
   projects: [
     {
       title: 'Tape',
-      body: 'An experiment with tape delay and world music inspired by Thyme.',
+      body: 'An experiment with tape delay and world music inspired by Thyme effects processor.',
       url: 'https://amiselaytes.com/tape',
     },
     {
       title: 'Loop',
-      body: 'Angular looper for live input',
+      body: 'Record and playback live input with colorful UI.',
       url: 'https://amiselaytes.com/loop',
+    },
+    {
+      title: 'Freeverb',
+      body: 'Web audio freeverb delay for live input.',
+      url: 'https://amiselaytes.com/freeverb',
     },
   ],
   meta: {
-    title: "Hi! I'm Anton. Yet another web developer",
+    title: 'Web developer with interest in music & audio',
     siteUrl: 'https://amiselaytes.com',
   },
   urls: {
