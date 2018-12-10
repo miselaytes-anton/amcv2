@@ -13,6 +13,14 @@ module.exports = {
         failOnError: false
       }
     }
+  },
+  {
+    resolve: 'gatsby-plugin-web-font-loader',
+    options: {
+      google: {
+        families: ['Roboto Slab:300']
+      }
+    }
   }
   ]
 };
