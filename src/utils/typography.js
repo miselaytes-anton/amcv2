@@ -29,6 +29,9 @@ const typography = new Typography({
     },
     'body': {
       textAlign: 'center'
+    },
+    'ul': {
+      listStylePosition: 'inside'
     }
   }),
 });
