@@ -29,12 +29,12 @@ jobs:
         key: v1-dependencies-{{ checksum "package.json" }}
 
     # run tests and build
-    - run: npm run ci
+    - run: npm run lint
     - run: npm run build
     - persist_to_workspace:
         root: ~/repo
         paths:
-        - build
+        - public
 
   deploy:
     working_directory: ~/repo
@@ -46,7 +46,7 @@ jobs:
     - run:
         name: Deploy Over SSH
         command: |
-          scp -r build/* $SSH_USER@$SSH_HOST:$SSH_DEPLOY_FOLDER
+          scp -r public/* $SSH_USER@$SSH_HOST:$SSH_DEPLOY_FOLDER
 
 workflows:
   version: 2

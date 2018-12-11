@@ -16,7 +16,7 @@
     "build": "npx gatsby build",
     "develop": "npx gatsby develop",
     "start": "npm run develop",
-    "lint": "npx eslint src --fix",
+    "lint": "npx eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
