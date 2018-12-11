@@ -4,7 +4,16 @@ import speach from '../audio/speach.mp3';
 const getAudioBuffer = (audioCtx, url) => {
   return fetch(url)
   .then(response => response.arrayBuffer())
-  .then(arrayBuffer => audioCtx.decodeAudioData(arrayBuffer));
+  .then(arrayBuffer => new Promise((res, rej) => audioCtx.decodeAudioData(arrayBuffer, res, rej)));
+};
+
+const getAudioContext = () => {
+  //eslint-disable-next-line
+  if (typeof window !== `undefined`){
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    return Ctx ? new Ctx() : null;
+  }
+  return null;
 };
 
 const setUpAudio = (audioContext, buffer) => {
@@ -36,6 +45,7 @@ class Canvas extends React.Component {
     super(props);
     this.ref = React.createRef();
     this.colors = false;
+    this.audioContext = getAudioContext();
   }
 
   //eslint-disable-next-line
@@ -44,9 +54,12 @@ class Canvas extends React.Component {
   }
   makeColors = () => {
     this.colors = !this.colors;
-  }
+  };
 
   componentDidMount() {
+    if(!this.audioContext) {
+      return;
+    }
     const w = window.innerWidth;
     const h = 200;
     const canvasContext = this.ref.current.getContext('2d');
@@ -84,21 +97,20 @@ class Canvas extends React.Component {
       requestAnimationFrame(() => draw(analyser));
     };
 
-    const audioContext = new AudioContext();
-    getAudioBuffer(audioContext, speach)
+    getAudioBuffer(this.audioContext, speach)
     .then(buffer => {
-      const {analyser} = setUpAudio(audioContext, buffer);
+      const {analyser} = setUpAudio(this.audioContext, buffer);
       draw(analyser);
     });
   }
 
   render() {
-    return <canvas
+    return this.audioContext ? <canvas
       style={{cursor: 'pointer'}}
       ref={this.ref}
       id="main-canvas"
       onClick={this.makeColors}
-    />;
+    /> : '';
   }
 }
 
