@@ -1,7 +1,7 @@
 import React from 'react';
 import speach from '../audio/speach.mp3';
 
-const w = 600;
+const w = window.innerWidth;
 const h = 200;
 
 const getAudioBuffer = (audioCtx, url) => {
