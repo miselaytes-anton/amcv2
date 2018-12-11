@@ -1,9 +1,6 @@
 import React from 'react';
 import speach from '../audio/speach.mp3';
 
-const w = window.innerWidth;
-const h = 200;
-
 const getAudioBuffer = (audioCtx, url) => {
   return fetch(url)
   .then(response => response.arrayBuffer())
@@ -31,31 +28,39 @@ const setUpAudio = (audioContext, buffer) => {
   //analyser.connect(audioContext.destination);
   return {analyser};
 };
+const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
+const randomColor = () => `rgb(${getRandomInt(255)},${getRandomInt(255)},${getRandomInt(255)})`;
 
 class Canvas extends React.Component {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
+    this.colors = false;
   }
 
   //eslint-disable-next-line
-  shouldCompomentUpdate() {
+  shouldComponentUpdate() {
     return false;
+  }
+  makeColors = () => {
+    this.colors = !this.colors;
   }
 
   componentDidMount() {
+    const w = window.innerWidth;
+    const h = 200;
     const canvasContext = this.ref.current.getContext('2d');
     canvasContext.canvas.width = w;
     canvasContext.canvas.height = h;
-    canvasContext.strokeStyle = 'rgb(0,0,0)';
-    canvasContext.fillStyle = 'rgb(255,255,255)';
+    canvasContext.fillStyle = 'rgba(255,255,255, 1)';
     canvasContext.lineWidth = 0.5;
 
     const draw = (analyser) => {
       const bufferLength = analyser.frequencyBinCount;
       const dataArray = new Uint8Array(bufferLength);
       analyser.getByteFrequencyData(dataArray);
-      canvasContext.clearRect(0, 0, w, h);
+      canvasContext.fillRect(0, 0, w, h);
+      canvasContext.strokeStyle = this.colors ? randomColor() : 'rgb(0,0,0)';
       canvasContext.beginPath();
 
       const angleStep = 2 * Math.PI / bufferLength;
@@ -89,8 +94,10 @@ class Canvas extends React.Component {
 
   render() {
     return <canvas
+      style={{cursor: 'pointer'}}
       ref={this.ref}
       id="main-canvas"
+      onClick={this.makeColors}
     />;
   }
 }
