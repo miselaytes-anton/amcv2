@@ -1,11 +1,17 @@
 import React from 'react';
 import speach from '../audio/speach.mp3';
+import frames from '../audio/fft-data.json';
 
+const sum = arr => arr.reduce((sum, v) => sum + v, 0);
+const avg = arr => sum(arr) / arr.length;
 const getAudioBuffer = (audioCtx, url) => {
   return fetch(url)
   .then(response => response.arrayBuffer())
   .then(arrayBuffer => new Promise((res, rej) => audioCtx.decodeAudioData(arrayBuffer, res, rej)));
 };
+const getAvgValue = (frames, frameIndex, valueIndex, num) => frameIndex > num
+  ? avg(frames.slice(frameIndex - num, frameIndex).map(frame => frame[valueIndex]))
+  : avg(frames.slice(0, frameIndex).concat(frames.slice(frames.length - frameIndex, frames.length)).map(frame => frame[valueIndex]));
 
 const getAudioContext = () => {
   //eslint-disable-next-line
@@ -67,11 +73,20 @@ class Canvas extends React.Component {
     canvasContext.canvas.height = h;
     canvasContext.fillStyle = 'rgba(255,255,255, 1)';
     canvasContext.lineWidth = 0.5;
-
+    let frameIndex = 0;
+    const numFrames = frames.length;
     const draw = (analyser) => {
-      const bufferLength = analyser.frequencyBinCount;
-      const dataArray = new Uint8Array(bufferLength);
-      analyser.getByteFrequencyData(dataArray);
+
+      // const bufferLength = analyser.frequencyBinCount;
+      // const dataArray = new Uint8Array(bufferLength);
+      // analyser.getByteFrequencyData(dataArray);
+
+      const bufferLength = frames[frameIndex].length;
+      frameIndex++;
+      if (frameIndex === numFrames - 1) {
+        frameIndex = 0;
+      }
+
       canvasContext.fillRect(0, 0, w, h);
       canvasContext.strokeStyle = this.colors ? randomColor() : 'rgb(0,0,0)';
       canvasContext.beginPath();
@@ -80,13 +95,13 @@ class Canvas extends React.Component {
       const R = 10;
       const circleCenter = {
         x: w / 2,
-        y: h / 2 - 30
+        y: h / 2 - 60
       };
 
       for (let i = 0; i < bufferLength; i++) {
         //reflect in the middle
         const index = i < bufferLength / 2 ? i : bufferLength - i;
-        const v = dataArray[index] * 0.5;
+        const v = getAvgValue(frames, frameIndex, index, 30) * 3;
         const x = circleCenter.x + Math.sin(angleStep * i) * (R + v);
         const y = circleCenter.y + Math.cos(angleStep * i) * (R + v);
         canvasContext.moveTo(circleCenter.x, circleCenter.y);
