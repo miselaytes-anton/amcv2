@@ -101,7 +101,7 @@ class Canvas extends React.Component {
       for (let i = 0; i < bufferLength; i++) {
         //reflect in the middle
         const index = i < bufferLength / 2 ? i : bufferLength - i;
-        const v = getAvgValue(frames, frameIndex, index, 30) * 3;
+        const v = frames[frameIndex][index];
         const x = circleCenter.x + Math.sin(angleStep * i) * (R + v);
         const y = circleCenter.y + Math.cos(angleStep * i) * (R + v);
         canvasContext.moveTo(circleCenter.x, circleCenter.y);
