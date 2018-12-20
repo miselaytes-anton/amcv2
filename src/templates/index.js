@@ -22,6 +22,7 @@ export default ({pageContext: {projects, articles, meta, urls}}) => (
       <p> Hi! I'm Anton, a web developer. Lately I do a lot of <strong>music & audio</strong> related projects.
         You can check my code at <a href={urls.github} target="_blanc" title="code">GitHub </a>
         and read some of my articles at <a href={urls.medium} target="_blanc" title="articles">Medium</a>.
+        The visualization above is generated from a robot voice reading this paragraph.
       </p>
       <h1>Articles</h1>
       <ul> {articles.map(article => <Article key={article.url} {...article} />)} </ul>

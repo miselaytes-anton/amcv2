@@ -27,7 +27,7 @@ module.exports = {
     },
   ],
   meta: {
-    title: 'Web developer with interest in music & audio',
+    title: 'Web developer, music & audio',
     siteUrl: 'https://amiselaytes.com',
   },
   urls: {
