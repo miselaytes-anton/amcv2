@@ -17,12 +17,12 @@ module.exports = {
     },
     {
       title: 'Loop',
-      body: 'Record and playback live input with colorful UI.',
+      body: 'Record and loop multiple audio tracks. Comes with colorful UI.',
       url: 'https://amiselaytes.com/loop',
     },
     {
       title: 'Freeverb',
-      body: 'Web audio freeverb delay for live input.',
+      body: 'Web audio Freeverb delay effect for live input.',
       url: 'https://amiselaytes.com/freeverb',
     },
   ],
