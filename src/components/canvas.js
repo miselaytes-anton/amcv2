@@ -44,13 +44,14 @@ class Canvas extends React.Component {
       const R = 10;
       const circleCenter = {
         x: w / 2,
-        y: h / 2 - 30
+        y: h / 2 - 25
       };
 
       for (let i = 0; i < bufferLength; i++) {
         //reflect in the middle
         const index = i < bufferLength / 2 ? i : bufferLength - i;
-        const v = frames[frameIndex][index];
+        //take every even bar
+        const v = frames[frameIndex][index*2] * 0.5;
         const x = circleCenter.x + Math.sin(angleStep * i) * (R + v);
         const y = circleCenter.y + Math.cos(angleStep * i) * (R + v);
         canvasContext.moveTo(circleCenter.x, circleCenter.y);

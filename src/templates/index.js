@@ -1,5 +1,4 @@
 import React from 'react';
-import {BrowserView} from 'react-device-detect';
 import speach from '../audio/speech.mp3';
 import Meta from '../components/meta';
 import Canvas from '../components/canvas';
@@ -16,7 +15,7 @@ const Article = ({title, url}) => (<li>
 export default ({pageContext: {projects, articles, meta, urls}}) => (
   <div >
     <Meta {...meta} />
-    <BrowserView><Canvas /></BrowserView>
+    <Canvas />
     <section style={{margin: '1rem auto', maxWidth: 600}}>
       <h1>About</h1>
       <p> Hi! I'm Anton, a web developer. Lately I do a lot of <strong>music & audio</strong> related projects.
