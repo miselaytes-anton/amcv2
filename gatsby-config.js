@@ -14,5 +14,12 @@ module.exports = {
       }
     }
   },
+  {
+    resolve: `gatsby-plugin-google-analytics`,
+    options: {
+      trackingId: "UA-53251698-1",
+      head: false,
+    },
+  },
   ]
 };
