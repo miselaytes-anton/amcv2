@@ -7,8 +7,9 @@ from matplotlib import cm
 from matplotlib.colors import LightSource
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 
-with open('data.json', 'r') as json_file:
+with open(sys.argv[1], 'r') as json_file:
   data = np.array(json.load(json_file))
 
 z = data
