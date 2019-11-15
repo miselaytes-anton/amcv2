@@ -11,20 +11,21 @@ module.exports = {
   ],
   projects: [
     {
-      title: 'Tape',
-      body: 'An experiment with tape delay and world music inspired by Thyme effects processor.',
-      url: 'https://amiselaytes.com/tape',
+      title: 'Web Audio Experiments',
+      body: 'Varius projects using web audio: sound effects, games, music instruments and sound visualizations.',
+      url: 'https://amiselaytes.com/webaudio',
     },
     {
-      title: 'Loop',
-      body: 'Record and loop multiple audio tracks. Comes with colorful UI.',
-      url: 'https://amiselaytes.com/loop',
+      title: 'Elements Cinema',
+      body: 'A film blog interested in learning through films, categorizing them by mood, atmosphere, topics and how they influence you rather than by use of genres.',
+      url: 'http://elementscinema.com',
     },
+  ],
+  talks: [
     {
-      title: 'Freeverb',
-      body: 'Web audio Freeverb delay effect for live input.',
-      url: 'https://amiselaytes.com/freeverb',
-    },
+      title: 'Visualizing music and voice with Web Audio and Canvas',
+      url: 'https://www.youtube.com/watch?v=AUAd37FeV0w'
+    }
   ],
   meta: {
     title: 'Web developer, music & audio',

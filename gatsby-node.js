@@ -1,9 +1,9 @@
-const {projects, articles, meta, urls} = require('./content');
+const {projects, articles, meta, urls, talks} = require('./content');
 
 exports.createPages = async ({actions: {createPage}}) => {
   createPage({
     path: '/',
     component: require.resolve('./src/templates/index.js'),
-    context: {projects, articles, urls, meta: {...meta, pathname: '/'}},
+    context: {talks, projects, articles, urls, meta: {...meta, pathname: '/'}},
   });
 };
