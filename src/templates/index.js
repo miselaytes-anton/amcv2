@@ -4,12 +4,12 @@ import Canvas from '../components/canvas';
 import GitHubIcon from '../components/gitHubIcon';
 
 const ItemWithBody = ({title, body, url}) => (<div>
-  <h3><a href={url}>{title}</a></h3>
+  <h3><a href={url} target="_blanc">{title}</a></h3>
   <p>{body}</p>
 </div>);
 
 const ListItem = ({title, url}) => (<li>
-  <a href={url}>{title}</a>
+  <a href={url} target="_blanc">{title}</a>
 </li>);
 
 export default ({pageContext: {projects, articles, meta, urls, talks}}) => (

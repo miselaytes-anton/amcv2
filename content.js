@@ -20,6 +20,16 @@ module.exports = {
       body: 'A film blog interested in learning through films, categorizing them by mood, atmosphere, topics and how they influence you rather than by use of genres.',
       url: 'http://elementscinema.com',
     },
+    {
+      title: 'Kakapo',
+      body: 'Musical instrument (CV sequencer for a synthesizer) built using Beagle Bone and Pure Data',
+      url: 'https://github.com/miselaytes-anton/kakapo'
+    },
+    {
+      title: 'Saxophone',
+      body: 'Art installation project for a friend using Raspberry Pi and old rotary phones',
+      url: 'https://github.com/miselaytes-anton/saxophone',
+    }
   ],
   talks: [
     {
